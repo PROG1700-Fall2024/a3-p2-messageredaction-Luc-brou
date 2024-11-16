@@ -2,35 +2,58 @@
 #Description:   Design and write a program that counts and removes all desired letters from 
 #               any user-entered sentence or phrase.
 
-#Student #:     
-#Student Name:  
+#Student #:W0489720     
+#Student Name:Luc Brousseau  
+
+def stop(user_input):
+    if user_input.lower() == "quit":
+        print("\nEnding program...")
+        print("Ended.")
+        exit()  
 
 def main():
     # YOUR CODE STARTS HERE, each line must be indented (one tab)
 
-    print("Hello! This program will remove certain characters from a word. Input letters separated by commas.")
+    print("Hello! This program will remove certain characters from a word.")
+    print("Type quit at any point to end the program.")
 
-    new_word=""
-    character_del=[]
+    while True:
 
-    word=input("\nInput a word. ")
-    delete=input("Input the characters you would like to delete. ")
-    character_del.append(delete.lower())
+        character_del=[] #creates empty list for characters to delete to go inside of
 
-    print(character_del)
+        word=input("\nInput a word. ")
 
+        stop(word) #calls function which checks if user wants to stop program
 
-    for char in character_del:
-        new_word = word.replace(character_del, "_")
-    
-    character_del = delete.split(",")
+        numC= (input("How many characters are you going to delete? "))
 
-    if word.lower()=="stop":
-        print("\nEnding program...")
-        print("Ended.")
-        return
-    
-    print (new_word)
+        if not numC.isdigit():
+            print("\nPlease enter a valid amount of characters to delete.")
+            return
+
+        stop(numC) #calls function which checks if user wants to stop program
+
+        if numC.isdigit():
+            numChars=int(numC)
+            if numChars <= 0:
+                print("\nPlease enter a valid amount of characters to delete.")
+                return
+
+        for counter in range(numChars):
+        
+            delete=input("\nInput the character you would like to delete. ")
+            stop(delete) #calls function which checks if user wants to stop program
+            character_del.append(delete) #adds characters to delete into a list
+        
+        stop(word) #calls function which checks if user wants to stop program
+
+        new_word = word
+        for char in character_del:
+            new_word = new_word.replace(char, "_").replace(char.upper(), "_").replace(char.lower(), "_")
+
+        print (f"\nCharacters removed: {str(character_del)}") #fix to be "user friendly" looking (:D)
+        print (f"Charcters removed: {len(character_del)}") #how to tell how many characters were removed?
+        print(f"New word: {new_word}") #prints new word with removed letters
 
 
     # YOUR CODE ENDS HERE
