@@ -51,8 +51,8 @@ def main():
         for char in character_del:
             new_word = new_word.replace(char, "_").replace(char.upper(), "_").replace(char.lower(), "_")
 
-        print (f"\nCharacters removed: {str(character_del)}") #fix to be "user friendly" looking (:D)
-        print (f"Charcters removed: {len(character_del)}") #how to tell how many characters were removed?
+        print (f"\nCharacters removed: {(character_del)}") 
+        print (f"Charcters removed: {len(character_del)}") 
         print(f"New word: {new_word}") #prints new word with removed letters
 
 
